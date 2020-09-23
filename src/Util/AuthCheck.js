@@ -1,6 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
+//will be used when login function works
+
 export default function (OriginalComponent, isPrivate) {
     function AuthCheck(props) {
         const user = localStorage.getItem("username");
