@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 import GoogleLogin from "react-google-login";
 import { getClientId, login } from "../Api/AuthCalls";
+import { useHistory } from "react-router-dom";
 
 export default function Auth() {
   const [clientId, setClientId] = useState("");
+  const history = useHistory();
 
-  const signIn = (response) => {
-    login(response);
+  const signIn = async (response) => {
+    let userData = await login(response);
+    if (userData) {
+      localStorage.setItem("email", userData.data.email);
+    }
+    history.push("/");
   };
 
   const failSignIn = (response) => {
