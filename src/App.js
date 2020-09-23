@@ -6,12 +6,16 @@ import AuthPage from "./Pages/AuthPage";
 
 function App() {
   return (
+    <div className="app">
+      <div className="app__body">
     <BrowserRouter>
         <div className="App">
           <Route exact path="/" component={HomePage} />
           <Route exact path="/login" component={AuthPage} />
         </div>
     </BrowserRouter>
+    </div>
+    </div>
   );
 }
 
