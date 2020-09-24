@@ -7,16 +7,10 @@ import AuthCheck from "./Util/AuthCheck";
 
 function App() {
   return (
-    <div className="app">
-      <div className="app__body">
         <BrowserRouter>
-          <div className="App">
-            <Route exact path="/" component={AuthCheck(HomePage, true)} />
+            <Route exact path="/" component={AuthCheck(HomePage, false)} />
             <Route exact path="/login" component={AuthPage} />
-          </div>
         </BrowserRouter>
-      </div>
-    </div>
   );
 }
 

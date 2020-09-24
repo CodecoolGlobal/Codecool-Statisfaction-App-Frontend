@@ -1,3 +1,24 @@
 .sidebarOption {
     display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 20px;
+}
+
+.sidebarOption > h2 {
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-right: 20px;
+}
+
+.sidebarOption:hover {
+    background-color: var(--codecool-color-background);
+    border-radius: 30px;
+    color: var(--codecool-color-blue);
+    transition: color 100ms ease-out;
+
+}
+
+.sidebarOption--active {
+    color: var(--codecool-color-blue);
 }
