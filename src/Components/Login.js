@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import '../Components/Login.css'
 import GoogleLogin from "react-google-login";
 import { getClientId, login } from "../Api/AuthCalls";
 import { useHistory } from "react-router-dom";
