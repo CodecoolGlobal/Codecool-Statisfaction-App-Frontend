@@ -10,7 +10,7 @@ function Sidebar() {
             <SidebarOption active text="Home"/>
             <SidebarOption text="Questions"/>
             <SidebarOption text="Profile"/>
-            <SidebarOption onClick={logout()} text="Logout"/>
+            <SidebarOption onClick={logout} text="Logout"/>
         </div>
     )
 }
