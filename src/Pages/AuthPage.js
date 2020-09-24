@@ -1,9 +1,10 @@
 import React from "react";
 import Login from "../Components/Login";
+import "../Pages/AuthPage.css"
 
 const AuthPage = () => {
   return (
-    <div>
+    <div className="authpage">
       <Login />
     </div>
   );
