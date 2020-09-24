@@ -1,5 +1,17 @@
 import React from "react";
+import { logout } from "../Api/AuthCalls";
 
 export default function HomePage() {
-  return <div>welcome!</div>;
+  return (
+    <div>
+      <div>welcome!</div>
+      <button
+        onClick={() => {
+          logout();
+        }}
+      >
+        logout
+      </button>
+    </div>
+  );
 }
