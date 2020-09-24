@@ -11,7 +11,7 @@ export default function Auth() {
   const signIn = async (response) => {
     let userData = await login(response);
     if (userData) {
-      localStorage.setItem("email", userData.data.email);
+      localStorage.setItem("tokenId", response.tokenId);
     }
     history.push("/");
   };
@@ -30,6 +30,8 @@ export default function Auth() {
 
   return clientId === "" ? (
     <p> There is no cliens id </p>
+  ) : localStorage.getItem("tokenId") ? (
+    <p>You already logged in</p>
   ) : (
     <div>
       <GoogleLogin
