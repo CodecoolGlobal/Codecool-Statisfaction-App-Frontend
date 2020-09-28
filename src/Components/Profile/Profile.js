@@ -4,7 +4,7 @@ import { getCourses, getUserData } from "../../Api/ProfileCalls";
 
 function Profile() {
   const [user, setUser] = useState();
-  const [courses, setCourses] = useState();
+  const [courses, setCourses] = useState(null);
 
   useEffect(() => {
     async function fetchCourses() {
@@ -21,20 +21,21 @@ function Profile() {
     }
     fetchUserData();
   }, []);
-
   return (
     <div className="profile">
       <div className="profile-data"></div>
       <div className="profile-courses">
-        <select name="courses">
-            {courses.lenght === 0 ? 
-                <div className="error">u dont have courses</div>
-                :
-                courses.map(course =>
-                    <option value={course.name}>{course.name}</option>
-                )    
-        }
-        </select>
+        {courses === null || courses.lenght === 0 ? (
+          <div className="error">u dont have courses</div>
+        ) : (
+          <select name="courses">
+            {courses.map((course) => (
+              <option key={course.id} value={course.name}>
+                {course.name}
+              </option>
+            ))}
+          </select>
+        )}
       </div>
     </div>
   );
