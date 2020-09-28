@@ -10,6 +10,7 @@ function Profile() {
     async function fetchCourses() {
       let data = await getCourses();
       setCourses(data);
+      await console.log(data)
     }
     fetchCourses();
   }, []);
@@ -27,13 +28,7 @@ function Profile() {
       <div className="profile-data"></div>
       <div className="profile-courses">
         <select name="courses">
-            {courses.lenght === 0 ? 
-                <div className="error">u dont have courses</div>
-                :
-                courses.map(course =>
-                    <option value={course.name}>{course.name}</option>
-                )    
-        }
+          
         </select>
       </div>
     </div>
