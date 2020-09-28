@@ -20,12 +20,16 @@ function Sidebar() {
         history.push("/")
     }
 
+    const handleLogout = async () => {
+        if( await logout()) history.push("/login")
+    }
+
     return (
         <div className="sidebar">
             <SidebarOption active onClick={homePage} text="Home"/>
             <SidebarOption onClick={questsionsPage} text="Questions"/>
             <SidebarOption onClick={profilePage} text="Profile"/>
-            <SidebarOption onClick={logout} text="Logout"/>
+            <SidebarOption onClick={handleLogout} text="Logout"/>
         </div>
     )
 }
