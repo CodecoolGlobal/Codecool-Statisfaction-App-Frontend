@@ -6,6 +6,7 @@ function Profile() {
   const [user, setUser] = useState();
   const [courses, setCourses] = useState(null);
   const [course, setCourse] = useState("");
+  const [picture, setPicture] = useState("https://upload.wikimedia.org/wikipedia/en/e/ee/Unknown-person.gif")
 
   useEffect(() => {
     async function fetchCourses() {
@@ -21,6 +22,7 @@ function Profile() {
       let data = await getUserData();
       setUser(data);
       await console.log(data);
+      if (data.pictureLink !== null) setPicture(data.pictureLink)
     }
     fetchUserData();
   }, []);
@@ -42,6 +44,7 @@ function Profile() {
   return (
     <div className="profile">
       <div className="profile-data">
+        <img alt="user" src={picture}></img>
         <h2>Name: {user && `${user.firstName}  ${user.lastName}`}</h2>
         <h2>Course: {user && user.courseName}</h2>
       </div>

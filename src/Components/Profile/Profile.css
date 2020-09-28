@@ -3,3 +3,9 @@
     flex-direction: column;
     margin: 1rem;
 }
+
+.profile-select {
+    color: var(--codecool-color-blue);
+    appearance: none;
+    
+}
