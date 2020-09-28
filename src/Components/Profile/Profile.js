@@ -32,7 +32,7 @@ function Profile() {
   const submitCourseChange = () => {
     let tokenId = localStorage.getItem("tokenId");
     let obj = {
-      coursName: course,
+      courseName: course,
       tokenId: tokenId,
     };
     console.log(obj);
