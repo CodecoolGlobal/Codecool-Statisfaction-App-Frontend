@@ -6,6 +6,8 @@ export async function getCourses() {
 }
 
 export async function getUserData() {
-    let response = await axios.get("/profile")
-    return response.data;
+  let response = await axios.post("/profile", {
+    tokenId: localStorage.getItem("tokenId"),
+  });
+  return response.data;
 }
