@@ -1,6 +1,6 @@
 import React from 'react'
 import Profile from '../Components/Profile'
-import Sidebar from '../Components/Sidebar'
+import Sidebar from "../Components/Sidebar/Sidebar";
 import '../Pages/ProfilePage.css'
 
 function ProfilePage() {

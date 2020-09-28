@@ -1,7 +1,7 @@
 import React from 'react'
 import SidebarOption from './SidebarOption'
-import '../Components/Sidebar.css'
-import { logout } from "../Api/AuthCalls";
+import '../Sidebar/Sidebar.css'
+import { logout } from "../../Api/AuthCalls";
 import { useHistory } from 'react-router-dom'
 
 function Sidebar() {

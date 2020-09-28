@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Components/SidebarOption.css'
+import '../Sidebar/SidebarOption.css'
 
 function SidebarOption({ text, active, onClick }) {
     return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import Sidebar from '../Components/Sidebar'
+import Sidebar from "../Components/Sidebar/Sidebar";
 import QuestionFeed from "../Components/QuestionFeed"
 import "../Pages/QuestionsPage.css"
 
