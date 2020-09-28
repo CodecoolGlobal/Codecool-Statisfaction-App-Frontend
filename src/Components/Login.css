@@ -1,0 +1,16 @@
+.login {
+    display: grid;
+    place-items: center;
+    margin: 1rem;
+    padding: 1rem;
+    
+}
+
+.login > h2 {
+    margin: 1rem;
+    color: var(--codecool-color-blue)
+}
+
+.login-btn {
+    margin: 1rem;
+}

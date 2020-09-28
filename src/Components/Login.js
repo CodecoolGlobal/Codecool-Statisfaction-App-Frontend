@@ -29,12 +29,14 @@ export default function Auth() {
   }, []);
 
   return clientId === "" ? (
-    <p> There is no cliens id </p>
+    <p> There is no client id </p>
   ) : localStorage.getItem("tokenId") ? (
     <p>You already logged in</p>
   ) : (
-    <div>
+    <div className="login">
+      <h2 className="login-text">Please login with your google account</h2>
       <GoogleLogin
+        className="login-btn"
         clientId={clientId}
         buttonText="Login"
         onSuccess={signIn}

@@ -42,8 +42,8 @@ function Profile() {
   return (
     <div className="profile">
       <div className="profile-data">
-        <h2>Name:</h2>
-        <h2>Course:</h2>
+        <h2>Name: {user && `${user.firstName}  ${user.lastName}`}</h2>
+        <h2>Course: {user && user.courseName}</h2>
       </div>
 
       {courses === null || courses.lenght === 0 ? (
