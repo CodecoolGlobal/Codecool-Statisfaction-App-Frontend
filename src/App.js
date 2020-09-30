@@ -7,17 +7,23 @@ import AuthPage from "./Pages/AuthPage";
 import AuthCheck from "./Util/AuthCheck";
 import QuestionsPage from "./Pages/QuestionsPage";
 import Header from "./Components/Header/Header";
+import FeedbacksPage from "./Pages/FeedbacksPage/FeedbacksPage";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Route exact path="/" component={AuthCheck(HomePage, true)} />
-      <Route exact path="/profile" component={AuthCheck(ProfilePage, true)} />
+      <Route exact path="/" component={AuthCheck(HomePage, false)} />
+      <Route
+        exact
+        path="/feedbacks"
+        component={AuthCheck(FeedbacksPage, false)}
+      />
+      <Route exact path="/profile" component={AuthCheck(ProfilePage, false)} />
       <Route
         exact
         path="/questions"
-        component={AuthCheck(QuestionsPage, true)}
+        component={AuthCheck(QuestionsPage, false)}
       />
       <Route exact path="/login" component={AuthPage} />
     </BrowserRouter>
