@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { GetFeedbacks } from "../../Api/FeedbacksCalls";
 import Feedback from "../Feedback/Feedback";
+import PageHeader from "../PageHeader/PageHeader";
 import "./Feedbacks.css";
 
 export default function Feedbacks() {
   const [feedbacks, setFeedbacks] = useState([]);
 
-  const handleVote = (vote) => {
-      
-  };
+  const handleVote = (vote) => {};
 
   useEffect(() => {
     async function FetchFeedbacks() {
@@ -19,6 +18,7 @@ export default function Feedbacks() {
   }, []);
   return (
     <div className="wall">
+      <PageHeader title={"Feedbacks"} />
       <div className="feedbacks">
         {feedbacks.length === 0 ? (
           <p>There are no feedbacks yet</p>

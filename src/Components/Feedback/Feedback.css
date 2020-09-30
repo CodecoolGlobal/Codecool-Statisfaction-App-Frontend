@@ -1,6 +1,7 @@
 .feedback-card {
   margin: 20px;
   font-size: medium;
+  background-color: black;
 }
 
 .feedback-card .card-footer {
