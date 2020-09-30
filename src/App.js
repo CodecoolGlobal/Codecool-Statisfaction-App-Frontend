@@ -6,15 +6,21 @@ import ProfilePage from "./Pages/ProfilePage";
 import AuthPage from "./Pages/AuthPage";
 import AuthCheck from "./Util/AuthCheck";
 import QuestionsPage from "./Pages/QuestionsPage";
+import Header from "./Components/Header/Header";
 
 function App() {
   return (
-        <BrowserRouter>
-            <Route exact path="/" component={AuthCheck(HomePage, true)} />
-            <Route exact path="/profile" component={AuthCheck(ProfilePage, true)} />
-            <Route exact path="/questions" component={AuthCheck(QuestionsPage, true)} />
-            <Route exact path="/login" component={AuthPage} />
-        </BrowserRouter>
+    <BrowserRouter>
+      <Header />
+      <Route exact path="/" component={AuthCheck(HomePage, true)} />
+      <Route exact path="/profile" component={AuthCheck(ProfilePage, true)} />
+      <Route
+        exact
+        path="/questions"
+        component={AuthCheck(QuestionsPage, true)}
+      />
+      <Route exact path="/login" component={AuthPage} />
+    </BrowserRouter>
   );
 }
 
