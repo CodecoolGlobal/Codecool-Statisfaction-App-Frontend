@@ -29,11 +29,24 @@ export default function Sidebar(props) {
 
   return (
     <div className="sidebar">
-      <SidebarOption active onClick={homePage} text="Home" />
-      <SidebarOption onClick={feedbacksPage} text="Feedbacks" />
-      <SidebarOption onClick={questsionsPage} text="Questions" />
-      <SidebarOption onClick={profilePage} text="Profile" />
-      <SidebarOption onClick={handleLogout} text="Logout" />
+      <SidebarOption
+        active
+        onClick={homePage}
+        text="Home"
+        iconName="announcement"
+      />
+      <SidebarOption
+        onClick={feedbacksPage}
+        text="Feedbacks"
+        iconName="error"
+      />
+      <SidebarOption
+        onClick={questsionsPage}
+        text="Questions"
+        iconName="help"
+      />
+      <SidebarOption onClick={profilePage} text="Profile" iconName="person" />
+      <SidebarOption onClick={handleLogout} text="Logout" iconName="lock" />
     </div>
   );
 }
