@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import "../Profile/Profile.css";
 import { getCourses, getUserData, changeCourse } from "../../Api/ProfileCalls";
 import PageHeader from "../PageHeader/PageHeader";
+import LocationOn from "@material-ui/icons/LocationOn";
+import MenuBook from "@material-ui/icons/MenuBook";
+import Edit from "@material-ui/icons/Edit";
+import AccountBox from "@material-ui/icons/AccountBox";
 
 function Profile() {
   const [user, setUser] = useState();
@@ -49,9 +53,20 @@ function Profile() {
       <PageHeader title={"Profile"} />
       <div className="profile">
         <div className="profile-data">
-          <img alt="user" src={picture}></img>
-          <h2>Name: {user && `${user.firstName}  ${user.lastName}`}</h2>
-          <h2>Course: {user && user.courseName}</h2>
+          <img className="avatar" alt="user" src={picture}></img>
+          <h2 className="profile-text">
+            <AccountBox className="profile-icon" />
+            {user && `${user.firstName}  ${user.lastName}`}
+          </h2>
+          <h2 className="profile-text">
+            <LocationOn className="profile-icon" />
+            {user && user.city}
+            <Edit className="profile-icon-edit" />
+          </h2>
+          <h2 className="profile-text">
+            <MenuBook className="profile-icon" /> {user && user.courseName}
+            <Edit className="profile-icon-edit" />
+          </h2>
         </div>
 
         {courses === null || courses.lenght === 0 ? (
