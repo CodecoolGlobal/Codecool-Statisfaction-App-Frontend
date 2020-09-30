@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../Profile/Profile.css";
 import { getCourses, getUserData, changeCourse } from "../../Api/ProfileCalls";
+import PageHeader from "../PageHeader/PageHeader";
 
 function Profile() {
   const [user, setUser] = useState();
@@ -45,6 +46,7 @@ function Profile() {
 
   return (
     <div className="wall">
+      <PageHeader title={"Profile"} />
       <div className="profile">
         <div className="profile-data">
           <img alt="user" src={picture}></img>
