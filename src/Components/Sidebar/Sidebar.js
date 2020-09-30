@@ -23,9 +23,14 @@ export default function Sidebar(props) {
     if (await logout()) history.push("/login");
   };
 
+  const feedbacksPage = () => {
+    history.push("/feedbacks");
+  };
+
   return (
     <div className="sidebar">
       <SidebarOption active onClick={homePage} text="Home" />
+      <SidebarOption onClick={feedbacksPage} text="Feedbacks" />
       <SidebarOption onClick={questsionsPage} text="Questions" />
       <SidebarOption onClick={profilePage} text="Profile" />
       <SidebarOption onClick={handleLogout} text="Logout" />
