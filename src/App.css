@@ -1,14 +1,17 @@
 body {
-    --codecool-color-blue: #4287f5;
-    --codecool-color-red: #d12b3c;
-    --codecool-color-background: #e8f5fe;
+  --codecool-color-blue: #4287f5;
+  --codecool-color-red: #d12b3c;
+  --codecool-color-background: #e8f5fe;
 }
 
 .app {
-    display: flex;
-    height: 100vh;
-    max-width: 1300px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 10px;
+  display: flex;
+  height: 100vh;
+  max-width: 1300px;
+}
+
+.wall {
+  margin-top: 20px;
+  min-width: 70%;
+  max-width: 70%;
 }
