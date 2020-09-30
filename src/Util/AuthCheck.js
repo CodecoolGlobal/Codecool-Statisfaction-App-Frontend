@@ -10,7 +10,7 @@ export default function (OriginalComponent, isPrivate) {
 
     if (!isPrivate && user !== null) {
       console.log("you are already logged in");
-      history.push("/");
+      // history.push("/");
     }
 
     if (isPrivate && user === null) {
