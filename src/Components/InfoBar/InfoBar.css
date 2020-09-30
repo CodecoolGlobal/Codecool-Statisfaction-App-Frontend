@@ -1,0 +1,9 @@
+.infobar {
+  /* border-left: 1px solid var(--codecool-color-blue); */
+  border-left: 1px solid rgba(156, 156, 156, 0.2);
+  flex: 0.2;
+  max-width: 15%;
+  min-width: 15%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
