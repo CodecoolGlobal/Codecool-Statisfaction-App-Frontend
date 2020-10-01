@@ -8,10 +8,10 @@ export default function (OriginalComponent, isPrivate) {
     const user = localStorage.getItem("tokenId");
     const history = useHistory();
 
-    if (!isPrivate && user !== null) {
-      console.log("you are already logged in");
-      // history.push("/");
-    }
+    // if (!isPrivate && user !== null) {
+    //   console.log("you are already logged in");
+    //   history.push("/");
+    // }
 
     if (isPrivate && user === null) {
       console.log("LOG IN MAN");
