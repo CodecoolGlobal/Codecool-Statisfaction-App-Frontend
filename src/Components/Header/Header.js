@@ -4,10 +4,10 @@ import "./Header.css";
 function Header() {
   return (
     <div className="header">
-      <figure class="header__logo">
+      <figure className="header__logo">
         <a
           href="https://codecool.com/hu/"
-          class="header__logo"
+          className="header__logo"
           title="Codecool"
         >
           <svg
@@ -76,8 +76,8 @@ function Header() {
                 y2="9.63278"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0.512968" stop-color="#DB3F41"></stop>
-                <stop offset="0.72976" stop-color="#961D1D"></stop>
+                <stop offset="0.512968" stopColor="#DB3F41"></stop>
+                <stop offset="0.72976" stopColor="#961D1D"></stop>
               </linearGradient>
               <linearGradient
                 id="paint1_linear"
@@ -87,8 +87,8 @@ function Header() {
                 y2="-0.0747322"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0.494181" stop-color="#4C98CB"></stop>
-                <stop offset="0.740341" stop-color="#28638A"></stop>
+                <stop offset="0.494181" stopColor="#4C98CB"></stop>
+                <stop offset="0.740341" stopColor="#28638A"></stop>
               </linearGradient>
               <linearGradient
                 id="paint2_linear"
@@ -98,8 +98,8 @@ function Header() {
                 y2="5.18896"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0.266826" stop-color="#28638A"></stop>
-                <stop offset="0.476837" stop-color="#4C98CB"></stop>
+                <stop offset="0.266826" stopColor="#28638A"></stop>
+                <stop offset="0.476837" stopColor="#4C98CB"></stop>
               </linearGradient>
               <linearGradient
                 id="paint3_linear"
@@ -109,8 +109,8 @@ function Header() {
                 y2="1.65631"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0.260417" stop-color="#961D1D"></stop>
-                <stop offset="0.543421" stop-color="#DB3F41"></stop>
+                <stop offset="0.260417" stopColor="#961D1D"></stop>
+                <stop offset="0.543421" stopColor="#DB3F41"></stop>
               </linearGradient>
             </defs>
           </svg>
