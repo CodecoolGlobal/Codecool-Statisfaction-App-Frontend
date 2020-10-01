@@ -19,7 +19,6 @@ function Profile() {
     async function fetchCourses() {
       let data = await getCourses();
       setCourses(data);
-      await console.log(data);
     }
     fetchCourses();
   }, []);
@@ -28,7 +27,6 @@ function Profile() {
     async function fetchUserData() {
       let data = await getUserData();
       setUser(data);
-      await console.log(data);
       if (data.pictureLink !== null) setPicture(data.pictureLink);
     }
     fetchUserData();
@@ -44,7 +42,6 @@ function Profile() {
       courseName: course,
       tokenId: tokenId,
     };
-    console.log(obj);
     changeCourse(obj);
   };
 
