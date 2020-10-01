@@ -32,7 +32,7 @@ export default function Sidebar(props) {
       <SidebarOption
         active
         onClick={homePage}
-        text="Home"
+        text="News"
         iconName="announcement"
       />
       <SidebarOption
