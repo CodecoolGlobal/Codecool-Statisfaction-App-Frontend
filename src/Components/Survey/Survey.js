@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Survey.css";
 import Modal from "react-modal";
 import { getQuestions } from "../../Api/QuestionCalls";
+import Question from "./Question";
 
 export default function Survey({ title, date, isDone }) {
   Modal.setAppElement("body");
@@ -48,11 +49,7 @@ export default function Survey({ title, date, isDone }) {
             </div>
             <div className="modal-body">
               {questions.map((question) => {
-                return (
-                  <p key={question.id} style={{ padding: "1%" }}>
-                    {question.title}
-                  </p>
-                );
+                return <Question key={question.id} question={question} />;
               })}
             </div>
             <div className="modal-footer">
