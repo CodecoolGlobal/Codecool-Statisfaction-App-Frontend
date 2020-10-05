@@ -35,3 +35,15 @@ export async function Vote(vote) {
   */
   return;
 }
+
+export async function PostFeedback(feedback) {
+  /* TODO
+  feedback = {
+    username : anonymus or username,
+      title : feedback message,
+      date: current date as a string,
+      votes: 1
+  }
+  */
+  return 4;
+}
