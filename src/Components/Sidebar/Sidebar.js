@@ -29,6 +29,7 @@ export default function Sidebar(props) {
 
   return (
     <div className="sidebar">
+      <div className="sidebar-background"></div>
       <SidebarOption
         active
         onClick={homePage}
@@ -40,11 +41,7 @@ export default function Sidebar(props) {
         text="Feedbacks"
         iconName="error"
       />
-      <SidebarOption
-        onClick={questsionsPage}
-        text="Questions"
-        iconName="help"
-      />
+      <SidebarOption onClick={questsionsPage} text="Surveys" iconName="help" />
       <SidebarOption onClick={profilePage} text="Profile" iconName="person" />
       <SidebarOption onClick={handleLogout} text="Logout" iconName="lock" />
     </div>
