@@ -5,6 +5,8 @@
   text-align: center;
   font-weight: 600;
   margin: 1%;
+  box-shadow: 5px 5px 5px -5px black;
+  border: 1px solid rgba(156, 156, 156, 0.2);
 }
 
 .survey-container--isDone {
