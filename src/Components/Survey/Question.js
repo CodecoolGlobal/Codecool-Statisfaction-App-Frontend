@@ -3,7 +3,6 @@ import "./Question.css";
 
 export default function Question({ question }) {
   const [answerValue, setAnswerValue] = useState(3);
-  const [isSelected, setIsSelected] = useState(false);
 
   return (
     <div className="question-container">
