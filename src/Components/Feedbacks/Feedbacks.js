@@ -45,6 +45,7 @@ export default function Feedbacks() {
       if (feedbackId > 0) {
         feedback["id"] = feedbackId;
         setFeedbacks(feedbacks.concat(feedback));
+        setFeedbackMessage("");
       }
     }
     SendFeedback(feedback);
@@ -118,7 +119,11 @@ export default function Feedbacks() {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleSave} color="primary">
+          <Button
+            onClick={handleSave}
+            color="primary"
+            disabled={feedbackMessage.length === 0}
+          >
             Add feedback
           </Button>
         </DialogActions>
