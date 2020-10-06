@@ -8,9 +8,12 @@ body {
   display: flex;
   height: 100vh;
   max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.wall {
+/* .wall {
   min-width: 110%;
   max-width: 100%;
 }
+ */

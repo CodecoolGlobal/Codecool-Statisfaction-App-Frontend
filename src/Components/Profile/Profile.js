@@ -46,9 +46,8 @@ function Profile() {
   };
 
   return (
-    <div className="wall">
+    <div className="profile">
       <PageHeader title={"Profile"} />
-      <div className="profile">
         <div className="profile-data">
           <img className="avatar" alt="user" src={picture}></img>
           <h2 className="profile-text">
@@ -85,7 +84,6 @@ function Profile() {
           </div>
         )}
       </div>
-    </div>
   );
 }
 

@@ -5,10 +5,6 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 
 export default function FeedbacksPage() {
   return (
-    <div className="app">
-      <Sidebar />
       <Feedbacks />
-      <InfoBar />
-    </div>
   );
 }
