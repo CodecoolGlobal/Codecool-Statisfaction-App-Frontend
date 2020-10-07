@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import getNews from "../Api/NewsCalls";
-import "../Components/NewsFeed.css";
+import {getNews} from "../../Api/NewsCalls";
+import "./NewsFeed.css";
 import News from "./News";
-import PageHeader from "./PageHeader/PageHeader";
+import PageHeader from "../PageHeader/PageHeader";
 
 function NewsFeed() {
   const [news, setNews] = useState([]);

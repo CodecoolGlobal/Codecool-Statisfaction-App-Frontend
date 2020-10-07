@@ -1,7 +1,7 @@
 import React from "react";
-import "../Components/QuestionFeed.css";
-import PageHeader from "./PageHeader/PageHeader";
-import Survey from "./Survey/Survey";
+import "./QuestionFeed.css";
+import PageHeader from "../PageHeader/PageHeader";
+import Survey from "./Survey";
 
 function QuestionFeed() {
   return (

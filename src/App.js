@@ -5,11 +5,11 @@ import AuthCheck from "./Util/AuthCheck";
 import Header from "./Components/Header/Header";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import InfoBar from "./Components/InfoBar/InfoBar";
-import Feedbacks from "./Components/Feedbacks/Feedbacks";
-import NewsFeed from "./Components/NewsFeed";
+import NewsFeed from "./Components/News/NewsFeed";
 import Profile from "./Components/Profile/Profile";
-import QuestionFeed from "./Components/QuestionFeed";
-import Login from "./Components/Login"
+import QuestionFeed from "./Components/Survey/QuestionFeed";
+import Login from "./Components/Login/Login"
+import Feedbacks from "./Components/Feedback/Feedbacks"
 
 function App() {
   return (

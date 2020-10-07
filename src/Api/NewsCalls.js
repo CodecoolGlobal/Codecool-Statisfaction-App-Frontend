@@ -1,4 +1,4 @@
-export default async function getNews() {
+export async function getNews() {
   return [
     {
       id: 1,
