@@ -8,29 +8,25 @@ import InfoBar from "./Components/InfoBar/InfoBar";
 import NewsFeed from "./Components/News/NewsFeed";
 import Profile from "./Components/Profile/Profile";
 import QuestionFeed from "./Components/Survey/QuestionFeed";
-import Login from "./Components/Login/Login"
-import Feedbacks from "./Components/Feedback/Feedbacks"
+import Login from "./Components/Login/Login";
+import Feedbacks from "./Components/Feedback/Feedbacks";
 
 function App() {
   return (
-  <div className="app">
-    <BrowserRouter>
-      <Sidebar />
-      <Route exact path="/login" component={Login} />
-      <Route
-        exact
-        path="/feedbacks"
-        component={AuthCheck(Feedbacks, true)}
-      />
-      <Route exact path="/profile" component={AuthCheck(Profile, true)} />
-      <Route
-        exact
-        path="/questions"
-        component={AuthCheck(QuestionFeed, true)}
-      />
-      <Route exact path="/" component={AuthCheck(NewsFeed, true)} />
-      <InfoBar />
-    </BrowserRouter>
+    <div className="app">
+      <BrowserRouter>
+        <Sidebar />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/feedbacks" component={AuthCheck(Feedbacks, true)} />
+        <Route exact path="/profile" component={AuthCheck(Profile, true)} />
+        <Route
+          exact
+          path="/questions"
+          component={AuthCheck(QuestionFeed, true)}
+        />
+        <Route exact path="/" component={AuthCheck(NewsFeed, true)} />
+        <InfoBar />
+      </BrowserRouter>
     </div>
   );
 }

@@ -29,9 +29,7 @@ export default function Sidebar(props) {
 
   return (
     <div className="sidebar">
-      <div className="sidebar-background"></div>
       <SidebarOption
-        active
         onClick={homePage}
         text="News"
         iconName="announcement"
