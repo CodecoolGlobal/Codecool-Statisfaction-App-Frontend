@@ -1,3 +1,5 @@
 #add-feedback-btn {
+  display: flex;
+  flex: 0.6;
   margin-left: 20px;
 }

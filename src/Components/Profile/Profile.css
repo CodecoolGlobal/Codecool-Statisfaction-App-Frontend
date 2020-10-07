@@ -1,5 +1,6 @@
 .profile {
   display: flex;
+  flex: 0.6;
   flex-direction: column;
   margin: 1rem;
   background-color: rgba(82, 137, 255, 0.1);
