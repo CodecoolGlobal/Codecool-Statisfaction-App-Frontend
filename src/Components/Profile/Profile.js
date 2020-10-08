@@ -27,7 +27,8 @@ function Profile() {
     async function fetchUserData() {
       let data = await getUserData();
       setUser(data);
-      if (data.pictureLink !== null) setPicture(data.pictureLink);
+      if (data.pictureLink) setPicture(data.pictureLink);
+      if (data.courseName) setCourse(data.courseName);
     }
     fetchUserData();
   }, []);
@@ -48,42 +49,43 @@ function Profile() {
   return (
     <div className="profile">
       <PageHeader title={"Profile"} />
-        <div className="profile-data">
-          <img className="avatar" alt="user" src={picture}></img>
-          <h2 className="profile-text">
-            <AccountBox className="profile-icon" />
-            {user && `${user.firstName}  ${user.lastName}`}
-          </h2>
-          <h2 className="profile-text">
-            <LocationOn className="profile-icon" />
-            {user && user.city}
-            <Edit className="profile-icon-edit" />
-          </h2>
-          <h2 className="profile-text">
-            <MenuBook className="profile-icon" /> {user && user.courseName}
-            <Edit className="profile-icon-edit" />
-          </h2>
-        </div>
-
-        {courses === null || courses.lenght === 0 ? (
-          <div className="error">u dont have courses</div>
-        ) : (
-          <div className="profile-courses">
-            <select
-              onChange={(e) => handleChange(e)}
-              className="profile-select"
-              name="courses"
-            >
-              {courses.map((course) => (
-                <option key={course.id} value={course.name}>
-                  {course.name}
-                </option>
-              ))}
-            </select>
-            <button onClick={submitCourseChange}>Save</button>
-          </div>
-        )}
+      <div className="profile-data">
+        <img className="avatar" alt="user" src={picture}></img>
+        <h2 className="profile-text">
+          <AccountBox className="profile-icon" />
+          {user && `${user.firstName}  ${user.lastName}`}
+        </h2>
+        <h2 className="profile-text">
+          <LocationOn className="profile-icon" />
+          {user && user.city}
+          <Edit className="profile-icon-edit" />
+        </h2>
+        <h2 className="profile-text">
+          <MenuBook className="profile-icon" /> {user && user.courseName}
+          <Edit className="profile-icon-edit" />
+        </h2>
       </div>
+
+      {courses === null || courses.lenght === 0 ? (
+        <div className="error">u dont have courses</div>
+      ) : (
+        <div className="profile-courses">
+          <select
+            onChange={(e) => handleChange(e)}
+            className="profile-select"
+            name="courses"
+            defaultValue={course}
+          >
+            {courses.map((course) => (
+              <option key={course.id} value={course.name}>
+                {course.name}
+              </option>
+            ))}
+          </select>
+          <button onClick={submitCourseChange}>Save</button>
+        </div>
+      )}
+    </div>
   );
 }
 

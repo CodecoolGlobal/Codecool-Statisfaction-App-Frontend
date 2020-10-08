@@ -25,9 +25,10 @@ export default function Feedback(props) {
       <CardActions>
         <p>{votes}</p>
         <IconButton
+          disabled={props.voted.includes(props.id)}
           onClick={() => {
             setVotes(votes + 1);
-            props.handleVote({ id: props.id, votes: votes });
+            props.handleVote(props.id);
           }}
         >
           <KeyboardArrowUpIcon />

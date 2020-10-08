@@ -9,7 +9,12 @@ import {
   TextField,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { GetFeedbacks, PostFeedback } from "../../Api/FeedbacksCalls";
+import {
+  GetFeedback,
+  GetFeedbacks,
+  PostFeedback,
+  Vote,
+} from "../../Api/FeedbacksCalls";
 import Feedback from "../Feedback/Feedback";
 import PageHeader from "../PageHeader/PageHeader";
 import "./Feedbacks.css";
@@ -19,8 +24,19 @@ export default function Feedbacks() {
   const [showAdd, setShowAdd] = useState(false);
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [anonymus, setAnonymus] = useState(false);
+  const [voted, setVoted] = useState([]);
 
-  const handleVote = (vote) => {};
+  const handleVote = (feedbackId) => {
+    async function SendVote(feedbackId) {
+      if (await Vote(feedbackId)) {
+        feedbacks.find((f) => f.id === feedbackId).voteCount++;
+      }
+    }
+    SendVote(feedbackId);
+    setVoted(voted.concat(feedbackId));
+    feedbacks.sort((f) => f.voteCount);
+    console.log(feedbacks);
+  };
 
   const handleClose = () => {
     setShowAdd(false);
@@ -30,21 +46,18 @@ export default function Feedbacks() {
 
   const handleSave = () => {
     setShowAdd(false);
-    var today = new Date();
-    let [month, day, year] = today.toLocaleDateString().split("/");
-
     let feedback = {
-      id: -1,
-      user: anonymus ? "anonymus" : "username", //localStorage.getItem("username"),
+      anonymus: anonymus,
       title: feedbackMessage,
-      date: `${year}-${month}-${day}`,
-      votes: 1,
     };
     async function SendFeedback(feedback) {
       let feedbackId = await PostFeedback(feedback);
       if (feedbackId > 0) {
-        feedback["id"] = feedbackId;
-        setFeedbacks(feedbacks.concat(feedback));
+        let newFeedback = await GetFeedback(feedbackId);
+        console.log(newFeedback);
+        let fbacks = feedbacks.concat(newFeedback);
+        fbacks.sort((f) => f.voteCount);
+        setFeedbacks(fbacks);
         setFeedbackMessage("");
       }
     }
@@ -54,7 +67,10 @@ export default function Feedbacks() {
   useEffect(() => {
     async function FetchFeedbacks() {
       let result = await GetFeedbacks();
-      setFeedbacks(result);
+      if (result) {
+        if (result.feedbacks) setFeedbacks(result.feedbacks);
+        if (result.votedFeedbackIds) setVoted(result.votedFeedbackIds);
+      }
     }
     FetchFeedbacks();
   }, []);
@@ -68,12 +84,14 @@ export default function Feedbacks() {
         ) : (
           feedbacks.map((feedback) => (
             <Feedback
-              key={`feedback-${feedback.title}`}
+              key={`feedback-${feedback.id}`}
               title={feedback.title}
               date={feedback.date}
-              user={feedback.user}
-              votes={feedback.votes}
+              user={feedback.userName}
+              votes={feedback.voteCount}
               handleVote={handleVote}
+              id={feedback.id}
+              voted={voted}
             />
           ))
         )}

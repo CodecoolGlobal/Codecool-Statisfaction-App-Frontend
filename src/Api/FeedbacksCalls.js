@@ -1,49 +1,45 @@
+import axios from "../Axios/axios";
+
 export async function GetFeedbacks() {
-  //TODO
-  return [
-    {
-      id: 1,
-      title: "This is the first feedback, dunno what to do with it",
-      date: "2020-09-30",
-      user: "anonymus",
-      votes: 3,
-    },
-    {
-      id: 2,
-      title: "A meaningless second message",
-      date: "2020-08-10",
-      user: "iszimate",
-      votes: 2,
-    },
-    {
-      id: 3,
-      title:
-        "A large comment with Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus. Convallis convallis tellus id",
-      date: "2020-04-10",
-      user: "Lorem Ipsum",
-      votes: 1,
-    },
-  ];
+  let result = await axios.post("/feedback/month", {
+    tokenId: localStorage.getItem("tokenId"),
+  });
+  if (result.status === 200) {
+    return result.data;
+  } else if (result.status === 204) {
+    return null;
+  }
+  console.log(result);
 }
 
-export async function Vote(vote) {
-  /* TODO
-  vote = {
-      id: id,
-      votes: incremented vote count
+export async function GetFeedback(id) {
+  let result = await axios.get(`/feedback/${id}`);
+  if (result.status === 200) {
+    return result.data;
   }
-  */
-  return;
+  return null;
+}
+
+export async function Vote(feedbackId) {
+  let result = await axios.put(`/feedback/${feedbackId}/vote`, {
+    feedbackId: feedbackId,
+    tokenId: localStorage.getItem("tokenId"),
+  });
+  if (result.status !== 200) {
+    console.log(result);
+    return false;
+  }
+  return true;
 }
 
 export async function PostFeedback(feedback) {
-  /* TODO
-  feedback = {
-    username : anonymus or username,
-      title : feedback message,
-      date: current date as a string,
-      votes: 1
+  let result = await axios.post("/feedback", {
+    tokenId: localStorage.getItem("tokenId"),
+    title: feedback.title,
+    anonymus: feedback.anonymus,
+  });
+  if (result.status !== 201) {
+    console.log(result.statusText);
   }
-  */
-  return 4;
+  return result.data;
 }
