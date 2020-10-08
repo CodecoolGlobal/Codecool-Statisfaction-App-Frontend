@@ -1,7 +1,5 @@
 .survey-feed-container {
   display: flex;
+  flex: 0.6;
   flex-direction: column;
-  margin: 1rem;
-  width: 92%;
-  padding: 2%;
 }

@@ -1,6 +1,6 @@
 .login {
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex: 0.6;
     margin: 1rem;
     padding: 1rem;
     
