@@ -20,3 +20,11 @@ export async function logout() {
   }
   return false;
 }
+
+export async function isAdmin() {
+  let response = await axios.post("/admins/isadmin", {
+    tokenId: localStorage.getItem("tokenId"),
+  });
+  if (response.status === 200) return true;
+  return false;
+}
