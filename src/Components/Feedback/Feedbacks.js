@@ -9,6 +9,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import { isAdmin } from "../../Api/AuthCalls";
 import {
   GetFeedback,
   GetFeedbacks,
@@ -25,6 +26,7 @@ export default function Feedbacks() {
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [anonymus, setAnonymus] = useState(false);
   const [voted, setVoted] = useState([]);
+  const [admin, setAdmin] = useState(false);
 
   const handleVote = (feedbackId) => {
     async function SendVote(feedbackId) {
@@ -64,6 +66,13 @@ export default function Feedbacks() {
     SendFeedback(feedback);
   };
 
+  const handleDelete = (id) => {
+    async function DeleteFeedback(id) {
+      await DeleteFeedback(id);
+    }
+    DeleteFeedback(id);
+  };
+
   useEffect(() => {
     async function FetchFeedbacks() {
       let result = await GetFeedbacks();
@@ -73,6 +82,14 @@ export default function Feedbacks() {
       }
     }
     FetchFeedbacks();
+  }, []);
+
+  useEffect(() => {
+    async function FetchAdmin() {
+      let result = await isAdmin();
+      setAdmin(result);
+    }
+    FetchAdmin();
   }, []);
 
   return (
@@ -92,6 +109,8 @@ export default function Feedbacks() {
               handleVote={handleVote}
               id={feedback.id}
               voted={voted}
+              admin={admin}
+              handleDelete={handleDelete}
             />
           ))
         )}
