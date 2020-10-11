@@ -9,6 +9,7 @@ import Profile from "./Components/Profile/Profile";
 import QuestionFeed from "./Components/Survey/QuestionFeed";
 import Login from "./Components/Login/Login";
 import Feedbacks from "./Components/Feedback/Feedbacks";
+import Admin from "./Components/Admin/Admin";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           path="/questions"
           component={AuthCheck(QuestionFeed, true)}
         />
+        <Route exact path="/addadmin" component={AuthCheck(Admin, true)} />
         <Route exact path="/" component={AuthCheck(NewsFeed, true)} />
         <InfoBar />
       </BrowserRouter>
