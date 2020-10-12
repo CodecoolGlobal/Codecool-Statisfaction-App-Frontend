@@ -45,7 +45,7 @@ export default function Admin() {
   }, []);
 
   return (
-    <div>
+    <div className="admin">
       <Button
         variant="contained"
         className="add-admin-btn"
