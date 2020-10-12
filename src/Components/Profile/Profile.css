@@ -5,7 +5,7 @@
 
 .profile-card {
   display: flex;
-  flex-direction: column  ;
+  flex-direction: column;
   width: 40%;
   height: 85%;
   padding: 1rem;
@@ -42,8 +42,6 @@
   align-self: center;
 }
 
-
-
 /* .profile {
   
   flex-direction: column;
@@ -62,12 +60,14 @@
 .profile-select {
   color: var(--codecool-color-blue);
   appearance: none;
-}
+}*/
 
 .avatar {
-  border-radius: 100%;
+  max-width: 100px;
+  align-self: center;
 }
 
+/*
 .profile-text {
   background-color: rgba(82, 137, 255, 0.2);
   border-radius: 10px;
