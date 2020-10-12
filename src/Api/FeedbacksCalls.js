@@ -46,7 +46,7 @@ export async function PostFeedback(feedback) {
 
 export async function DeleteFeedback(id) {
   let result = await axios.delete(`/feedback/${id}`, {
-    data: {
+    headers: {
       tokenId: localStorage.getItem("tokenId"),
     },
   });

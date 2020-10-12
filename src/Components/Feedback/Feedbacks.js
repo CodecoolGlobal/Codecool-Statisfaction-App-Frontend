@@ -11,6 +11,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { isAdmin } from "../../Api/AuthCalls";
 import {
+  DeleteFeedback,
   GetFeedback,
   GetFeedbacks,
   PostFeedback,
@@ -37,7 +38,6 @@ export default function Feedbacks() {
     SendVote(feedbackId);
     setVoted(voted.concat(feedbackId));
     feedbacks.sort((f) => f.voteCount);
-    console.log(feedbacks);
   };
 
   const handleClose = () => {
@@ -67,10 +67,14 @@ export default function Feedbacks() {
   };
 
   const handleDelete = (id) => {
-    async function DeleteFeedback(id) {
-      await DeleteFeedback(id);
+    async function RemoveFeedback(id) {
+      let result = await DeleteFeedback(id);
+      if (result) {
+        let filtered = feedbacks.filter((f) => f.id !== id);
+        setFeedbacks(filtered);
+      }
     }
-    DeleteFeedback(id);
+    RemoveFeedback(id);
   };
 
   useEffect(() => {
