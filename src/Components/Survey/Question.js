@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Question.css";
 
-export default function Question({ question }) {
+export default function Question({ question, setAnswer }) {
   const [answerValue, setAnswerValue] = useState(3);
 
   return (
@@ -11,23 +11,24 @@ export default function Question({ question }) {
         <div
           value={1}
           className="answer-option"
-          onClick={(event) => {
-            setAnswerValue(event.target.value);
+          onClick={() => {
+            setAnswerValue(1);
+            setAnswer(question.id, 1);
             console.log(answerValue);
           }}
         >
-          {">:("}
+          1
         </div>
         <div
           className="answer-option"
           value={2}
           onClick={() => {
             setAnswerValue(2);
-
+            setAnswer();
             console.log(answerValue);
           }}
         >
-          {":("}
+          2
         </div>
         <div
           className="answer-option"
@@ -37,7 +38,7 @@ export default function Question({ question }) {
             console.log(answerValue);
           }}
         >
-          {":|"}
+          3
         </div>
         <div
           className="answer-option"
@@ -47,7 +48,7 @@ export default function Question({ question }) {
             console.log(answerValue);
           }}
         >
-          {":)"}
+          4
         </div>
         <div
           className="answer-option"
@@ -57,7 +58,7 @@ export default function Question({ question }) {
             console.log(answerValue);
           }}
         >
-          {":D"}
+          5
         </div>
       </div>
     </div>

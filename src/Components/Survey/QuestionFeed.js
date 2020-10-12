@@ -1,16 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./QuestionFeed.css";
 import PageHeader from "../PageHeader/PageHeader";
 import Survey from "./Survey";
+import { getSurveys } from "../../Api/SuvreyCalls";
 
 function QuestionFeed() {
+  const [surveys, setSurveys] = useState([]);
+
+  useEffect(() => {
+    async function FetchSurveys() {
+      let result = await getSurveys();
+      if (result) {
+        setSurveys(result);
+      }
+    }
+    FetchSurveys();
+  }, []);
+
   return (
-      <div className="survey-feed-container">
+    <div className="survey-feed-container">
       <PageHeader title={"Surveys"} />
-        <Survey title="Weekly survey 01" date="01.10.2020" isDone />
-        <Survey title="Weekly survey 02" date="28.09.2020" isDOne="false" />
-        <Survey title="Weekly survey 03" date="23.09.2020" isDOne="false" />
-      </div>
+      {surveys.map((s) => {
+        return (
+          <Survey
+            key={s.id}
+            title={s.title}
+            date={s.date}
+            surveyId={s.id}
+            isDone={s.filledAlready}
+          />
+        );
+      })}
+      ;
+    </div>
   );
 }
 
