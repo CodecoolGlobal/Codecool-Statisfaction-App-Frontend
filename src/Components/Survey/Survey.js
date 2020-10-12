@@ -3,8 +3,11 @@ import "./Survey.css";
 import Modal from "react-modal";
 import { getQuestions } from "../../Api/QuestionCalls";
 import Question from "./Question";
+import { ContactsOutlined } from "@material-ui/icons";
+import { answers } from "./AnswerGlobals";
+import { saveSurvey } from "../../Api/SuvreyCalls";
 
-export default function Survey({ title, date, isDone }) {
+export default function Survey({ title, date, surveyId, isDone }) {
   Modal.setAppElement("body");
   const [questions, setQuestions] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -18,14 +21,38 @@ export default function Survey({ title, date, isDone }) {
   }, []);
 
   function openModal() {
+    createAnswers();
     setIsOpen(true);
   }
 
   function afterOpenModal() {}
 
   function closeModal() {
+    console.log(answers);
+    if (answers.length > 0) {
+      answers.length = 0;
+    }
     setIsOpen(false);
   }
+
+  function createAnswers() {
+    for (let question of questions) {
+      let answer = { surveyId: surveyId, questionId: question.id, value: 0 };
+      answers.push(answer);
+    }
+  }
+
+  const setAnswerValue = (questionId, value) => {
+    console.log("hallo");
+    let answer = answers.find((a) => a.questionId === questionId);
+    answer.value = value;
+  };
+
+  const sendAnswers = () => {
+    saveSurvey(surveyId, answers);
+    console.log(answers);
+    closeModal();
+  };
 
   return (
     <div
@@ -34,7 +61,11 @@ export default function Survey({ title, date, isDone }) {
     >
       <div className="survey-name">{title}</div>
       <div className="survey-date">{date}</div>
-      <div onClick={(e) => e.stopPropagation()}>
+      <div
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
@@ -49,11 +80,17 @@ export default function Survey({ title, date, isDone }) {
             </div>
             <div className="modal-body">
               {questions.map((question) => {
-                return <Question key={question.id} question={question} />;
+                return (
+                  <Question
+                    key={question.id}
+                    question={question}
+                    setAnswer={setAnswerValue}
+                  />
+                );
               })}
             </div>
             <div className="modal-footer">
-              <button className="modal-button-save" onClick={closeModal}>
+              <button className="modal-button-save" onClick={sendAnswers}>
                 Save
               </button>
               <button className="modal-button-close" onClick={closeModal}>
