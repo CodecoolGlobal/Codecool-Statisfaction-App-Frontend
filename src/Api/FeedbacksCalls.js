@@ -43,3 +43,15 @@ export async function PostFeedback(feedback) {
   }
   return result.data;
 }
+
+export async function DeleteFeedback(id) {
+  let result = await axios.delete(`/feedback/${id}`, {
+    headers: {
+      tokenId: localStorage.getItem("tokenId"),
+    },
+  });
+  if (result.status === 200) return true;
+
+  console.log(result);
+  return false;
+}

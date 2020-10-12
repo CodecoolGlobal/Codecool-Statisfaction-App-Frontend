@@ -20,3 +20,21 @@ export async function logout() {
   }
   return false;
 }
+
+export async function isAdmin() {
+  if (!localStorage.getItem("tokenId")) return false;
+  let response = await axios.post("/admins/isadmin", {
+    tokenId: localStorage.getItem("tokenId"),
+  });
+  if (response.status === 200) return true;
+  return false;
+}
+
+export async function addAdmin(email) {
+  let response = await axios.post("/admins", {
+    tokenId: localStorage.getItem("tokenId"),
+    email: email,
+  });
+  if (response.status === 201) return true;
+  return false;
+}

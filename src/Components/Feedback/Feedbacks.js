@@ -9,7 +9,9 @@ import {
   TextField,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import { isAdmin } from "../../Api/AuthCalls";
 import {
+  DeleteFeedback,
   GetFeedback,
   GetFeedbacks,
   PostFeedback,
@@ -25,6 +27,7 @@ export default function Feedbacks() {
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [anonymus, setAnonymus] = useState(false);
   const [voted, setVoted] = useState([]);
+  const [admin, setAdmin] = useState(false);
 
   const handleVote = (feedbackId) => {
     async function SendVote(feedbackId) {
@@ -35,7 +38,6 @@ export default function Feedbacks() {
     SendVote(feedbackId);
     setVoted(voted.concat(feedbackId));
     feedbacks.sort((f) => f.voteCount);
-    console.log(feedbacks);
   };
 
   const handleClose = () => {
@@ -64,6 +66,17 @@ export default function Feedbacks() {
     SendFeedback(feedback);
   };
 
+  const handleDelete = (id) => {
+    async function RemoveFeedback(id) {
+      let result = await DeleteFeedback(id);
+      if (result) {
+        let filtered = feedbacks.filter((f) => f.id !== id);
+        setFeedbacks(filtered);
+      }
+    }
+    RemoveFeedback(id);
+  };
+
   useEffect(() => {
     async function FetchFeedbacks() {
       let result = await GetFeedbacks();
@@ -73,6 +86,14 @@ export default function Feedbacks() {
       }
     }
     FetchFeedbacks();
+  }, []);
+
+  useEffect(() => {
+    async function FetchAdmin() {
+      let result = await isAdmin();
+      setAdmin(result);
+    }
+    FetchAdmin();
   }, []);
 
   return (
@@ -92,6 +113,8 @@ export default function Feedbacks() {
               handleVote={handleVote}
               id={feedback.id}
               voted={voted}
+              admin={admin}
+              handleDelete={handleDelete}
             />
           ))
         )}
