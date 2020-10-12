@@ -46,70 +46,71 @@ export default function Admin() {
 
   return (
     <div className="admin">
-      <Button
-        variant="contained"
-        className="add-admin-btn"
-        onClick={() => setAddShow(true)}
-        disabled={!admin}
-        color="primary"
-      >
-        Add admin
-      </Button>
-      <Dialog
-        open={addShow}
-        onClose={handleClose}
-        aria-labelledby="add-admin-dialog-title"
-      >
-        <DialogTitle id="add-admin-dialog-title">Add new admin</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Please enter the email address of who you want to give admin role.
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="email-input"
-            label="Email Address"
-            type="email"
-            fullWidth
-            onChange={(event) => setEmail(event.target.value)}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleSave} color="primary">
-            Add admin role
-          </Button>
-        </DialogActions>
-      </Dialog>
-      <Snackbar
-        open={showSuccess}
-        autoHideDuration={5000}
-        onClose={() => setShowSuccess(false)}
-      >
-        <Alert
+      <div className="admin-container">
+        <Button
+          variant="contained"
+          onClick={() => setAddShow(true)}
+          disabled={!admin}
+          color="primary"
+        >
+          Add admin
+        </Button>
+        <Dialog
+          open={addShow}
+          onClose={handleClose}
+          aria-labelledby="add-admin-dialog-title"
+        >
+          <DialogTitle id="add-admin-dialog-title">Add new admin</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Please enter the email address of who you want to give admin role.
+            </DialogContentText>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="email-input"
+              label="Email Address"
+              type="email"
+              fullWidth
+              onChange={(event) => setEmail(event.target.value)}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={handleSave} color="primary">
+              Add admin role
+            </Button>
+          </DialogActions>
+        </Dialog>
+        <Snackbar
+          open={showSuccess}
+          autoHideDuration={5000}
           onClose={() => setShowSuccess(false)}
-          severity="success"
-          variant="filled"
         >
-          Admin added successfully
-        </Alert>
-      </Snackbar>
-      <Snackbar
-        open={showError}
-        autoHideDuration={5000}
-        onClose={() => setShowError(false)}
-      >
-        <Alert
+          <Alert
+            onClose={() => setShowSuccess(false)}
+            severity="success"
+            variant="filled"
+          >
+            Admin added successfully
+          </Alert>
+        </Snackbar>
+        <Snackbar
+          open={showError}
+          autoHideDuration={5000}
           onClose={() => setShowError(false)}
-          severity="error"
-          variant="filled"
         >
-          Something went wrong
-        </Alert>
-      </Snackbar>
+          <Alert
+            onClose={() => setShowError(false)}
+            severity="error"
+            variant="filled"
+          >
+            Something went wrong
+          </Alert>
+        </Snackbar>
+      </div>
     </div>
   );
 }
