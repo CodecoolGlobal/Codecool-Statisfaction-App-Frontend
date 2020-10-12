@@ -41,6 +41,7 @@ export async function PostFeedback(feedback) {
   if (result.status !== 201) {
     console.log(result.statusText);
   }
+  console.log(result.data);
   return result.data;
 }
 
