@@ -16,7 +16,10 @@ import { Button } from "@material-ui/core";
 function Profile() {
   const [user, setUser] = useState();
   const [courses, setCourses] = useState(null);
+  const [defaultCourse, setDefaultCourse] = useState("");
+  const [defaultCity, setDefaultCity] = useState("");
   const [course, setCourse] = useState("");
+  const [city, setCity] = useState("");
   const [picture, setPicture] = useState(
     "https://upload.wikimedia.org/wikipedia/en/e/ee/Unknown-person.gif"
   );
@@ -34,7 +37,14 @@ function Profile() {
       let data = await getUserData();
       setUser(data);
       if (data.pictureLink) setPicture(data.pictureLink);
-      if (data.courseName) setCourse(data.courseName);
+      if (data.courseName) {
+        setCourse(data.courseName);
+        setDefaultCourse(data.courseName);
+      }
+      if (data.city) {
+        setCity(data.city);
+        setDefaultCity(data.city);
+      }
     }
     fetchUserData();
   }, []);
@@ -43,12 +53,19 @@ function Profile() {
     setCourse(e.target.value);
   };
 
+  const handleCityChange = (e) => {
+    setCity(e.target.value);
+  };
+
   const submitCourseChange = () => {
     let tokenId = localStorage.getItem("tokenId");
     let obj = {
       courseName: course,
       tokenId: tokenId,
+      city: city,
     };
+    setDefaultCity(city);
+    setDefaultCourse(course);
     changeCourse(obj);
   };
 
@@ -114,9 +131,7 @@ function Profile() {
           <MenuBook className="profile-icon" />
           <div className="profile-field-info">
             <div className="profile-field-info-title">Course:</div>
-            <div className="profile-field-info-name">
-              {`${user.courseName}`}
-            </div>
+            <div className="profile-field-info-name">{`${defaultCourse}`}</div>
           </div>
         </div>
         <div className="profile-field">
@@ -124,7 +139,7 @@ function Profile() {
           <div className="profile-field-info">
             <div className="profile-field-info-title">City:</div>
             <div className="profile-field-info-name">
-              {`${user.city == null ? "not yet added" : user.city}`}
+              {`${defaultCity === "" ? "not yet added" : defaultCity}`}
             </div>
           </div>
         </div>
@@ -140,6 +155,18 @@ function Profile() {
             ))}
           </Select>
           <FormHelperText>Select course</FormHelperText>
+        </FormControl>
+        <FormControl className="from">
+          <Select value={city} onChange={handleCityChange} displayEmpty>
+            <MenuItem value="" disabled>
+              {user.city && user.city}
+            </MenuItem>
+            <MenuItem value="Budapest">Budapest</MenuItem>
+            <MenuItem value="Miskolc">Miskolc</MenuItem>
+            <MenuItem value="Krakow">Krakow</MenuItem>
+            <MenuItem value="Bucharest">Bucharest</MenuItem>
+          </Select>
+          <FormHelperText>Select city</FormHelperText>
         </FormControl>
         <Button
           color="primary"
