@@ -11,11 +11,13 @@ import {
   DialogTitle,
   TextField,
 } from "@material-ui/core";
+import { isAdmin } from "../../Api/AuthCalls";
 
 function NewsFeed() {
   const [news, setNews] = useState([]);
   const [showAdd, setShowAdd] = useState(false);
   const [newsMessage, setNewsMessage] = useState("");
+  const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
     async function fetchNews() {
@@ -23,6 +25,14 @@ function NewsFeed() {
       setNews(result);
     }
     fetchNews();
+  }, []);
+
+  useEffect(() => {
+    async function FetchAdmin() {
+      let result = await isAdmin();
+      setAdmin(result);
+    }
+    FetchAdmin();
   }, []);
 
   const handleClose = () => {
@@ -40,7 +50,6 @@ function NewsFeed() {
       let newsId = await postNews(n);
       if (newsId.id > 0) {
         let newNews = await getNewsById(newsId.id);
-        console.log("csá");
         let allNews = news.concat(newNews);
         allNews.sort((n) => n.date);
         setNews(allNews);
@@ -58,46 +67,48 @@ function NewsFeed() {
           return <News key={n.id} news={n} />;
         })}
       </div>
-      <div className="button-container">
-        <Button
-          id="add-feedback-btn"
-          variant="contained"
-          color="primary"
-          onClick={() => setShowAdd(true)}
-        >
-          Add news
-        </Button>
-        <Dialog
-          open={showAdd}
-          onClose={handleClose}
-          aria-labelledby="add-dialog-title"
-        >
-          <DialogTitle id="add-dialog-title">Add news</DialogTitle>
-          <DialogContent>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="title-input"
-              label="News message"
-              multiline
-              fullWidth
-              onChange={(event) => setNewsMessage(event.target.value)}
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              Cancel
-            </Button>
-            <Button
-              onClick={handleSave}
-              color="primary"
-              disabled={newsMessage.length === 0}
-            >
-              Add news
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </div>
+      {admin ? (
+        <div className="button-container">
+          <Button
+            id="add-feedback-btn"
+            variant="contained"
+            color="primary"
+            onClick={() => setShowAdd(true)}
+          >
+            Add news
+          </Button>
+          <Dialog
+            open={showAdd}
+            onClose={handleClose}
+            aria-labelledby="add-dialog-title"
+          >
+            <DialogTitle id="add-dialog-title">Add news</DialogTitle>
+            <DialogContent>
+              <TextField
+                autoFocus
+                margin="dense"
+                id="title-input"
+                label="News message"
+                multiline
+                fullWidth
+                onChange={(event) => setNewsMessage(event.target.value)}
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} color="primary">
+                Cancel
+              </Button>
+              <Button
+                onClick={handleSave}
+                color="primary"
+                disabled={newsMessage.length === 0}
+              >
+                Add news
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </div>
+      ) : null}
     </div>
   );
 }
