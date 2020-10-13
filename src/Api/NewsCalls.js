@@ -24,7 +24,6 @@ export async function getNews() {
   let result = await axios.get("/news");
 
   if (result != null) {
-    console.log(result.data);
     return result.data;
   }
   return null;

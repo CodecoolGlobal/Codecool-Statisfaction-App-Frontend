@@ -48,8 +48,8 @@ function NewsFeed() {
 
     async function SendNews(n) {
       let newsId = await postNews(n);
-      if (newsId.id > 0) {
-        let newNews = await getNewsById(newsId.id);
+      if (newsId > 0) {
+        let newNews = await getNewsById(newsId);
         let allNews = news.concat(newNews);
         allNews.sort((n) => n.date);
         setNews(allNews);
