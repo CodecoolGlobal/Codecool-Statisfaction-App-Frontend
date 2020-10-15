@@ -1,0 +1,9 @@
+.wall {
+  display: flex;
+  flex: 0.6;
+  flex-direction: column;
+}
+
+#add-feedback-btn {
+  margin-left: 20px;
+}

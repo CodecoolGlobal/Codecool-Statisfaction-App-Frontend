@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import '../Components/Login.css'
+import '../Login/Login.css'
 import GoogleLogin from "react-google-login";
-import { getClientId, login } from "../Api/AuthCalls";
+import { getClientId, login } from "../../Api/AuthCalls";
 import { useHistory } from "react-router-dom";
 
 export default function Auth() {

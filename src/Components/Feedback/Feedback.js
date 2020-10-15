@@ -1,6 +1,13 @@
-import { Card, CardActions, CardContent, IconButton } from "@material-ui/core";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  IconButton,
+} from "@material-ui/core";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
-import React, { useState } from "react";
+import DeleteIcon from "@material-ui/icons/Delete";
+import React, { Fragment, useState } from "react";
 import "./Feedback.css";
 
 export default function Feedback(props) {
@@ -25,13 +32,29 @@ export default function Feedback(props) {
       <CardActions>
         <p>{votes}</p>
         <IconButton
+          disabled={props.voted.includes(props.id)}
           onClick={() => {
             setVotes(votes + 1);
-            props.handleVote({ id: props.id, votes: votes });
+            props.handleVote(props.id);
           }}
         >
           <KeyboardArrowUpIcon />
         </IconButton>
+        {props.admin ? (
+          <Button
+            variant="contained"
+            color="secondary"
+            className="delete-btn"
+            startIcon={<DeleteIcon />}
+            onClick={() => {
+              props.handleDelete(props.id);
+            }}
+          >
+            Delete
+          </Button>
+        ) : (
+          <Fragment />
+        )}
       </CardActions>
     </Card>
   );

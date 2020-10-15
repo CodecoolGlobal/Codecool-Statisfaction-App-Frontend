@@ -1,32 +1,34 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
-import HomePage from "./Pages/HomePage";
-import ProfilePage from "./Pages/ProfilePage";
-import AuthPage from "./Pages/AuthPage";
 import AuthCheck from "./Util/AuthCheck";
-import QuestionsPage from "./Pages/QuestionsPage";
-import Header from "./Components/Header/Header";
-import FeedbacksPage from "./Pages/FeedbacksPage/FeedbacksPage";
+import Sidebar from "./Components/Sidebar/Sidebar";
+import InfoBar from "./Components/InfoBar/InfoBar";
+import NewsFeed from "./Components/News/NewsFeed";
+import Profile from "./Components/Profile/Profile";
+import QuestionFeed from "./Components/Survey/QuestionFeed";
+import Login from "./Components/Login/Login";
+import Feedbacks from "./Components/Feedback/Feedbacks";
+import Admin from "./Components/Admin/Admin";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Route exact path="/" component={AuthCheck(HomePage, false)} />
-      <Route
-        exact
-        path="/feedbacks"
-        component={AuthCheck(FeedbacksPage, false)}
-      />
-      <Route exact path="/profile" component={AuthCheck(ProfilePage, false)} />
-      <Route
-        exact
-        path="/questions"
-        component={AuthCheck(QuestionsPage, false)}
-      />
-      <Route exact path="/login" component={AuthPage} />
-    </BrowserRouter>
+    <div className="app">
+      <BrowserRouter>
+        <Sidebar />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/feedbacks" component={AuthCheck(Feedbacks, true)} />
+        <Route exact path="/profile" component={AuthCheck(Profile, true)} />
+        <Route
+          exact
+          path="/questions"
+          component={AuthCheck(QuestionFeed, true)}
+        />
+        <Route exact path="/addadmin" component={AuthCheck(Admin, true)} />
+        <Route exact path="/" component={AuthCheck(NewsFeed, true)} />
+        <InfoBar />
+      </BrowserRouter>
+    </div>
   );
 }
 
