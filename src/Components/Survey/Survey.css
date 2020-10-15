@@ -1,0 +1,97 @@
+.survey-container {
+  display: flex;
+  /* flex: 0.6; */
+  background-color: rgb(255, 255, 109);
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  margin: 1%;
+  box-shadow: 5px 5px 5px -5px black;
+  border: 1px solid rgba(156, 156, 156, 0.2);
+}
+
+.survey-container--isDone {
+  background-color: rgb(132, 255, 132);
+}
+
+.survey-container:hover {
+  background-color: rgba(82, 137, 255, 0.3);
+}
+
+.survey-name {
+  float: left;
+  padding: 1%;
+}
+
+.survey-date {
+  float: right;
+  padding: 1%;
+}
+
+.modal-container {
+  height: fit-content;
+  border-radius: 10px;
+  background-color: rgb(162, 191, 253);
+}
+
+.modal-title {
+  float: left;
+  padding: 1%;
+}
+
+.modal-date {
+  float: right;
+  padding: 1%;
+}
+
+.modal-header {
+  border-radius: 10px;
+  font-size: 20px;
+  min-height: 8%;
+  height: 8%;
+  padding-bottom: 5%;
+  background-color: rgb(119, 161, 250);
+}
+
+.modal-body {
+  margin: 1%;
+}
+
+.modal-button-close {
+  padding: 1%;
+  margin: 1%;
+  font-family: "Exo", sans-serif;
+  font-size: 20px;
+  color: #fff;
+  background-color: rgb(209, 43, 60, 0.7);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-button-close:hover {
+  background-color: rgb(209, 43, 60);
+}
+
+.modal-button-save {
+  padding: 1%;
+  margin: 1%;
+  font-family: "Exo", sans-serif;
+  font-size: 20px;
+  color: #fff;
+  background-color: rgb(83, 190, 83, 0.7);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-button-save:hover {
+  background-color: rgb(83, 190, 83);
+}
+
+.modal-footer {
+  padding: 1%;
+  margin-bottom: 1%;
+  margin-top: 3%;
+  text-align: center;
+}

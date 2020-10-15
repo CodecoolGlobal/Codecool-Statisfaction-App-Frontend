@@ -1,0 +1,21 @@
+.header { 
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 100px;
+  width: 100%;
+  border-bottom: 1px solid rgba(156, 156, 156, 0.2);
+  height: 50px;
+  box-shadow: 5px 5px 5px -5px black;
+}
+
+.header__logo {
+  display: inline-block;
+  margin-left: 1.8%;
+  padding-top: 0.5%;
+}
+
+.header-text {
+  margin-left: 33%;
+  display: inline-block;
+  color: #4287f5;
+}

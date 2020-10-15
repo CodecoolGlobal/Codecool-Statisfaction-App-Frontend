@@ -1,0 +1,17 @@
+.feedback-card {
+  margin: 1%;
+  font-size: medium;
+  background-color: black;
+  box-shadow: 5px 5px 5px -5px black;
+}
+
+.feedback-card .card-footer {
+  display: flex;
+  margin-top: 10px;
+  font-size: small;
+}
+
+.feedback-card .card-footer .date {
+  margin-left: 10px;
+  font-style: italic;
+}

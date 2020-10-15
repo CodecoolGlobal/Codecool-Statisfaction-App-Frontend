@@ -1,0 +1,35 @@
+.question-container {
+  margin: 1%;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.question-description {
+  margin: 1%;
+  padding: 1%;
+}
+
+.answer-container {
+  margin: 1%;
+}
+
+.answer-option {
+  background-color: white;
+  text-align: center;
+  border-radius: 100%;
+  display: inline-block;
+  width: 2%;
+  height: 2%;
+  margin: 1%;
+  padding: 3%;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.answer-option:hover {
+  background-color: lightgreen;
+}
+
+.answer-otpion--selected {
+  background-color: lightpink;
+}

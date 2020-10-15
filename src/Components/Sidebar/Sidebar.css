@@ -1,0 +1,11 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(156, 156, 156, 0.2);
+  flex: 0.2;
+  padding: 20px;
+  color: white;
+  box-shadow: 8px 10px -5px rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);
+
+}
