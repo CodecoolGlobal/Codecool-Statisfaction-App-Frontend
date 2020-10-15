@@ -3,7 +3,6 @@ import "./Survey.css";
 import Modal from "react-modal";
 import { getQuestions } from "../../Api/QuestionCalls";
 import Question from "./Question";
-import { ContactsOutlined } from "@material-ui/icons";
 import { answers } from "./AnswerGlobals";
 import { saveSurvey } from "../../Api/SuvreyCalls";
 
@@ -23,6 +22,7 @@ export default function Survey({ title, date, surveyId, isDone }) {
   function openModal() {
     createAnswers();
     setIsOpen(true);
+    console.log(answers);
   }
 
   function afterOpenModal() {}
@@ -43,14 +43,16 @@ export default function Survey({ title, date, surveyId, isDone }) {
   }
 
   const setAnswerValue = (questionId, value) => {
-    console.log("hallo");
     let answer = answers.find((a) => a.questionId === questionId);
     answer.value = value;
   };
 
   const sendAnswers = () => {
-    saveSurvey(surveyId, answers);
-    console.log(answers);
+    async function send() {
+      let result = await saveSurvey(surveyId, answers);
+      if (result) answers = [];
+    }
+    send();
     closeModal();
   };
 

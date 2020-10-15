@@ -12,19 +12,19 @@ export async function login(response) {
 
 export async function logout() {
   let statusResponse = await axios.post("/logout", {
-    tokenId: localStorage.getItem("tokenId"),
+    tokenId: window.sessionStorage.getItem("tokenId"),
   });
   if (statusResponse.status === 200) {
-    localStorage.removeItem("tokenId");
+    window.sessionStorage.removeItem("tokenId");
     return true;
   }
   return false;
 }
 
 export async function isAdmin() {
-  if (!localStorage.getItem("tokenId")) return false;
+  if (!window.sessionStorage.getItem("tokenId")) return false;
   let response = await axios.post("/admins/isadmin", {
-    tokenId: localStorage.getItem("tokenId"),
+    tokenId: window.sessionStorage.getItem("tokenId"),
   });
   if (response.status === 200) return true;
   return false;
@@ -32,7 +32,7 @@ export async function isAdmin() {
 
 export async function addAdmin(email) {
   let response = await axios.post("/admins", {
-    tokenId: localStorage.getItem("tokenId"),
+    tokenId: window.sessionStorage.getItem("tokenId"),
     email: email,
   });
   if (response.status === 201) return true;

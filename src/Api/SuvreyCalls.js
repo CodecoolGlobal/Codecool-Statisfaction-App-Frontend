@@ -1,7 +1,7 @@
 import axios from "../Axios/axios";
 
 export async function saveSurvey(surveyId, answers) {
-  let tokenId = localStorage.getItem("tokenId");
+  let tokenId = window.sessionStorage.getItem("tokenId");
   let result = await axios.post(`/surveys/fill/${surveyId}`, {
     tokenId: tokenId,
     surveyId: surveyId,
@@ -14,7 +14,7 @@ export async function saveSurvey(surveyId, answers) {
 }
 
 export async function getSurveys() {
-  let tokenId = localStorage.getItem("tokenId");
+  let tokenId = window.sessionStorage.getItem("tokenId");
   let response = await axios.post("/surveys", { tokenId });
   return response.data;
 }

@@ -2,7 +2,7 @@ import axios from "../Axios/axios";
 
 export async function postNews(news) {
   let result = await axios.post("/news", {
-    tokenId: localStorage.getItem("tokenId"),
+    tokenId: window.sessionStorage.getItem("tokenId"),
     description: news.description,
   });
   if (result.status !== 201) {

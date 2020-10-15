@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import '../Login/Login.css'
+import "../Login/Login.css";
 import GoogleLogin from "react-google-login";
 import { getClientId, login } from "../../Api/AuthCalls";
 import { useHistory } from "react-router-dom";
@@ -11,7 +11,7 @@ export default function Auth() {
   const signIn = async (response) => {
     let userData = await login(response);
     if (userData) {
-      localStorage.setItem("tokenId", response.tokenId);
+      window.sessionStorage.setItem("tokenId", response.tokenId);
     }
     history.push("/");
   };
@@ -30,7 +30,7 @@ export default function Auth() {
 
   return clientId === "" ? (
     <p> There is no client id </p>
-  ) : localStorage.getItem("tokenId") ? (
+  ) : window.sessionStorage.getItem("tokenId") ? (
     <p>You already logged in</p>
   ) : (
     <div className="login">

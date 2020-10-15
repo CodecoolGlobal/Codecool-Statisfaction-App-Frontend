@@ -2,7 +2,7 @@ import axios from "../Axios/axios";
 
 export async function GetFeedbacks() {
   let result = await axios.post("/feedback/month", {
-    tokenId: localStorage.getItem("tokenId"),
+    tokenId: window.sessionStorage.getItem("tokenId"),
   });
   if (result.status === 200) {
     return result.data;
@@ -23,7 +23,7 @@ export async function GetFeedback(id) {
 export async function Vote(feedbackId) {
   let result = await axios.put(`/feedback/${feedbackId}/vote`, {
     feedbackId: feedbackId,
-    tokenId: localStorage.getItem("tokenId"),
+    tokenId: window.sessionStorage.getItem("tokenId"),
   });
   if (result.status !== 200) {
     console.log(result);
@@ -34,7 +34,7 @@ export async function Vote(feedbackId) {
 
 export async function PostFeedback(feedback) {
   let result = await axios.post("/feedback", {
-    tokenId: localStorage.getItem("tokenId"),
+    tokenId: window.sessionStorage.getItem("tokenId"),
     title: feedback.title,
     anonymus: feedback.anonymus,
   });
@@ -48,7 +48,7 @@ export async function PostFeedback(feedback) {
 export async function DeleteFeedback(id) {
   let result = await axios.delete(`/feedback/${id}`, {
     headers: {
-      tokenId: localStorage.getItem("tokenId"),
+      tokenId: window.sessionStorage.getItem("tokenId"),
     },
   });
   if (result.status === 200) return true;

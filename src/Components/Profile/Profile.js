@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "../Profile/Profile.css";
 import { getCourses, getUserData, changeCourse } from "../../Api/ProfileCalls";
-import PageHeader from "../PageHeader/PageHeader";
 import LocationOn from "@material-ui/icons/LocationOn";
 import MenuBook from "@material-ui/icons/MenuBook";
-import Edit from "@material-ui/icons/Edit";
 import AccountBox from "@material-ui/icons/AccountBox";
-import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
@@ -14,7 +11,7 @@ import Select from "@material-ui/core/Select";
 import { Button } from "@material-ui/core";
 
 function Profile() {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
   const [courses, setCourses] = useState(null);
   const [defaultCourse, setDefaultCourse] = useState("");
   const [defaultCity, setDefaultCity] = useState("");
@@ -58,7 +55,7 @@ function Profile() {
   };
 
   const submitCourseChange = () => {
-    let tokenId = localStorage.getItem("tokenId");
+    let tokenId = window.sessionStorage.getItem("tokenId");
     let obj = {
       courseName: course,
       tokenId: tokenId,
